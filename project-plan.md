@@ -25,7 +25,7 @@ follow the same approach and guidelines from https://simonwillison.net/2025/Dec/
 - [x] **QR code creator** (`qr-code.html`): Type text/URL, generate a downloadable QR code.
 - [x] **Markdown to HTML editor** (`markdown-editor.html`): Side-by-side live editor saving to localStorage.
 - [x] **API Key Settings Page** (`settings.html`): Secure global setting management for LLM APIs.
-- [x] **Groq Web Researcher** (`groq-researcher.html`): Agentic search using Groq Compound models.
+- [x] **Groq Chat** (`groq-chat.html`): AI assistant with web search, custom prompts, and presets.
 
 ### Standard HTML Tool Backlog
 - **Base64 Image Encoder:** Drag and drop an image, get the data URI string (uses native FileReader API).
