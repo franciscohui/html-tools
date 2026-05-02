@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My HTML Tools</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --bg: #f8fafc;
+            --text: #1e293b;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        p.subtitle { color: #64748b; margin-bottom: 3rem; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #e2e8f0;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+        .card h2 { margin: 0 0 0.5rem 0; font-size: 1.25rem; color: var(--primary); }
+        .card p { margin: 0; font-size: 0.9rem; color: #64748b; line-height: 1.4; }
+    </style>
+</head>
+<body>
+    <h1>HTML Tools</h1>
+    <p class="subtitle">A collection of simple, self-contained tools built with AI.</p>
+    
+    <div class="grid">
+        <a href="qr-code.html" class="card">
+            <h2>QR Code Creator</h2>
+            <p>Generate downloadable QR codes for any text or URL instantly.</p>
+        </a>
+        <a href="markdown-editor.html" class="card">
+            <h2>Markdown Editor</h2>
+            <p>Live preview markdown editor with automatic local persistence.</p>
+        </a>
+    </div>
+
+    <footer style="margin-top: 5rem; border-top: 1px solid #e2e8f0; padding-top: 2rem; font-size: 0.8rem; color: #94a3b8;">
+        Inspired by <a href="https://simonwillison.net/2025/Dec/10/html-tools/" style="color: inherit;">Simon Willison</a>. 
+        Hosted on GitHub Pages.
+    </footer>
+</body>
+</html>

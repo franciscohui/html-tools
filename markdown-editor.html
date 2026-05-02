@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Live Editor</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --sidebar: #f8fafc;
+            --border: #e2e8f0;
+            --text: #1e293b;
+            --accent: #6366f1;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text);
+            overflow: hidden;
+        }
+        .app {
+            display: flex;
+            height: 100vh;
+            flex-direction: column;
+        }
+        header {
+            padding: 0.75rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+        }
+        .main {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        textarea, .preview {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        textarea {
+            background: var(--sidebar);
+            border-right: 1px solid var(--border);
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            resize: none;
+        }
+        .preview {
+            background: var(--bg);
+        }
+        .preview h1, .preview h2, .preview h3 { margin-top: 0; }
+        .preview code { background: #f1f5f9; padding: 0.2rem 0.4rem; border-radius: 0.25rem; }
+        .preview pre { background: #f1f5f9; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; }
+        
+        @media (max-width: 768px) {
+            .main { flex-direction: column; }
+            textarea { border-right: none; border-bottom: 1px solid var(--border); }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <header>
+            <strong>Markdown Editor</strong>
+            <div id="status" style="font-size: 0.8rem; color: #64748b;">Saved to localStorage</div>
+        </header>
+        <div class="main">
+            <textarea id="editor" placeholder="Type markdown here..."></textarea>
+            <div id="preview" class="preview"></div>
+        </div>
+    </div>
+
+    <script>
+        const editor = document.getElementById('editor');
+        const preview = document.getElementById('preview');
+        const STORAGE_KEY = 'html-tools-markdown-content';
+
+        // Load initial content
+        const saved = localStorage.getItem(STORAGE_KEY);
+        editor.value = saved || '# Welcome to the Markdown Editor\n\nType on the left, see the result on the right.\n\n- It saves automatically\n- It uses `marked.js` via CDN\n- It stays in your browser';
+
+        function updatePreview() {
+            const content = editor.value;
+            preview.innerHTML = marked.parse(content);
+            localStorage.setItem(STORAGE_KEY, content);
+        }
+
+        editor.addEventListener('input', updatePreview);
+        updatePreview();
+    </script>
+</body>
+</html>

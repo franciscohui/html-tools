@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Creator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --bg: #f8fafc;
+            --text: #1e293b;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 { margin-bottom: 1.5rem; font-size: 1.5rem; }
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+        #qrcode {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #fff;
+            border: 1px solid #f1f5f9;
+        }
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: opacity 0.2s;
+            width: 100%;
+        }
+        button:hover { opacity: 0.9; }
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+        .footer a { color: var(--primary); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code Creator</h1>
+        <input type="text" id="text" placeholder="Enter URL or text..." value="https://partlysunnyai.com">
+        <div id="qrcode"></div>
+        <button onclick="downloadQR()">Download PNG</button>
+    </div>
+    <div class="footer">
+        Built with the <a href="https://simonwillison.net/2025/Dec/10/html-tools/">HTML Tools pattern</a>
+    </div>
+
+    <script>
+        const qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: "https://partlysunnyai.com",
+            width: 256,
+            height: 256,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+
+        const input = document.getElementById("text");
+        input.addEventListener("input", (e) => {
+            qrcode.clear();
+            if (e.target.value) {
+                qrcode.makeCode(e.target.value);
+            }
+        });
+
+        function downloadQR() {
+            const img = document.querySelector("#qrcode img");
+            if (img) {
+                const link = document.createElement("a");
+                link.download = "qrcode.png";
+                link.href = img.src;
+                link.click();
+            }
+        }
+    </script>
+</body>
+</html>
