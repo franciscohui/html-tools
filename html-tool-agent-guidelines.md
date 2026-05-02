@@ -18,7 +18,14 @@ When building an HTML tool, follow these architectural constraints to ensure the
 8. **Local File Processing:** Use `<input type="file">` to let users process files locally in their browser. You do not need a backend server to read, parse, or modify files.
 9. **Client-Side Downloads:** If the tool transforms data, provide a way for the user to download the result directly from the browser by dynamically generating file blobs.
 10. **Embrace WebAssembly (WASM):** For heavy computational tasks (like OCR, video processing, or running Python/SQLite), load WASM modules or environments like Pyodide directly from CDNs.
-11. **Consistent Footer:** Always include a small footer at the bottom of the tool that links back to the main repository: `Built with the <a href="https://github.com/franciscohui/html-tools">HTML Tools pattern</a>`.
+11. **Consistent Footer:** Always include a small footer at the bottom of the tool that links back to the main repository, the tools index, and the original inspiration:
+    ```html
+    <div class="footer">
+        <a href="index.html">← All Tools</a> &bull; 
+        <a href="https://github.com/franciscohui/html-tools">Source Code</a> &bull; 
+        Built with the <a href="https://simonwillison.net/2025/Dec/10/html-tools/">HTML Tools pattern</a>
+    </div>
+    ```
 
 ---
 
@@ -36,7 +43,7 @@ Follow these strict constraints:
 - Make the UI look modern, clean, and responsive (use native CSS or a lightweight CDN CSS framework if necessary).
 - [Optional depending on tool] Persist the user's input/state in the URL hash so it can be shared.
 - [Optional depending on tool] If an API key is required, prompt the user for it and securely store it in localStorage.
-- Always include a footer: `Built with the <a href="https://github.com/franciscohui/html-tools">HTML Tools pattern</a>`.
+- Always include a footer linking to `index.html`, the GitHub repo (`https://github.com/franciscohui/html-tools`), and the `HTML Tools pattern`.
 - The final output must be entirely self-contained in one file.
 ```
 
