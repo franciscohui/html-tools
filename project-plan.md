@@ -10,11 +10,11 @@ follow the same approach and guidelines from https://simonwillison.net/2025/Dec/
 ### Steps
 - [x] Extract the page
 - [x] Formulate instructions and guidelines and a reusable prompt
-- [ ] Initialize Git locally and connect to new GitHub Repo
-- [ ] Select 2 simple HTML tool ideas
-- [ ] Subagent 1: Scaffold, Test, and Commit Tool 1
-- [ ] Subagent 2: Scaffold, Test, and Commit Tool 2
-- [ ] Deploy: Push to main and verify on default github.io URL
+- [x] Initialize Git locally and connect to new GitHub Repo
+- [x] Select 2 simple HTML tool ideas
+- [x] Subagent 1: Scaffold, Test, and Commit Tool 1 (QR Code)
+- [x] Subagent 2: Scaffold, Test, and Commit Tool 2 (Markdown Editor)
+- [x] Deploy: Push to main and verify on default github.io URL
 - [ ] (Later) Configure tools.partlysunnyai.com custom domain
 
 ### Ideas for tools
