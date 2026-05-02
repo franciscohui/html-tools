@@ -15,7 +15,7 @@ follow the same approach and guidelines from https://simonwillison.net/2025/Dec/
 - [x] Subagent 1: Scaffold, Test, and Commit Tool 1 (QR Code)
 - [x] Subagent 2: Scaffold, Test, and Commit Tool 2 (Markdown Editor)
 - [x] Deploy: Push to main and verify on default github.io URL
-- [ ] (Later) Configure tools.partlysunnyai.com custom domain
+- [x] (Later) Configure tools.partlysunnyai.com custom domain
 
 ### Ideas for tools
 - **QR code creator:** Type text/URL, generate a downloadable QR code (using a CDN library like qrcode.js).
