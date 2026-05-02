@@ -77,7 +77,22 @@
             <textarea id="editor" placeholder="Type markdown here..."></textarea>
             <div id="preview" class="preview"></div>
         </div>
+        <div class="footer">
+            Built with the <a href="https://github.com/franciscohui/html-tools">HTML Tools pattern</a>
+        </div>
     </div>
+
+    <style>
+        .footer {
+            padding: 0.5rem 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: #64748b;
+            background: white;
+            text-align: center;
+        }
+        .footer a { color: var(--accent); text-decoration: none; }
+    </style>
 
     <script>
         const editor = document.getElementById('editor');
