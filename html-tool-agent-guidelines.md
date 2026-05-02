@@ -79,3 +79,22 @@ Because there is no build step, deployment is instantaneous and can be fully aut
    git push origin main
    ```
 4. **Prerequisite:** The target repository must have GitHub Pages enabled (e.g., pointing to the `main` branch root). Once pushed, the tool is immediately live at `https://[username].github.io/[repo]/tool-name.html`. No CI/CD configuration is required.
+
+---
+
+## Scaling & Organization Patterns
+
+As the repository grows to contain dozens or hundreds of tools, consider these patterns for organization and deployment:
+
+### Deploying from the Root (Default)
+By default, we deploy from the **`/ (root)`** folder of the `main` branch. 
+- **Visibility:** GitHub Pages will serve *every* file in the repository (except those starting with a dot, like `.git`). This means `project-plan.md`, guidelines, and other non-HTML files will be publicly accessible via their URL. For open-source tool collections, this transparency is highly encouraged.
+- **Flat Structure:** For maximum simplicity, place all `.html` tools directly in the root directory.
+- **Automated Indexing:** When maintaining 50+ tools in the root directory, manually updating `index.html` becomes tedious. Implement a script (e.g., Python or Node.js) to parse the directory, read the `<title>` and a description from each `.html` file, and automatically regenerate the `index.html` file before committing.
+
+### The `/docs` Folder Pattern (Separation of Concerns)
+If the root directory becomes cluttered with scripts, planning documents, or assets that you do not want served publicly:
+1. Create a folder named `docs/`.
+2. Move `index.html` and all tool `.html` files into this folder.
+3. In GitHub Settings -> Pages, change the source to deploy from the `/docs` folder instead of `/ (root)`.
+This cleanly separates your repository source code/planning from the public-facing deployment.
