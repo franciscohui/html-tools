@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Settings</title>
+    <style>
+        :root { --primary: #6366f1; --bg: #f8fafc; --text: #1e293b; --border: #e2e8f0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); max-width: 600px; margin: 0 auto; padding: 4rem 2rem; }
+        h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+        p { color: #64748b; line-height: 1.5; margin-bottom: 2rem; }
+        .card { background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border: 1px solid var(--border); }
+        label { display: block; font-weight: 600; margin-bottom: 0.5rem; }
+        input[type="password"] { width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 0.5rem; margin-bottom: 1.5rem; font-family: monospace; box-sizing: border-box; }
+        button { background: var(--primary); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 0.5rem; cursor: pointer; font-weight: 600; width: 100%; }
+        button:hover { opacity: 0.9; }
+        #status { margin-top: 1rem; text-align: center; font-size: 0.9rem; font-weight: 600; min-height: 1.5em; }
+        .success { color: #10b981; }
+        .footer { margin-top: 3rem; text-align: center; font-size: 0.8rem; color: #94a3b8; }
+        .footer a { color: var(--primary); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <a href="index.html" style="color: var(--primary); text-decoration: none;">&larr; Back to Tools</a>
+    <h1>API Settings</h1>
+    <p>Store your API keys locally in your browser. These keys never leave your device and are used directly by the tools to call AI providers.</p>
+    
+    <div class="card">
+        <label for="groqKey">Groq API Key</label>
+        <input type="password" id="groqKey" placeholder="gsk_...">
+        
+        <button onclick="saveKeys()">Save Settings</button>
+        <div id="status"></div>
+    </div>
+
+    <div class="footer">
+        <a href="index.html">← All Tools</a> &bull; 
+        <a href="https://github.com/franciscohui/html-tools">Source Code</a> &bull; 
+        Built with the <a href="https://simonwillison.net/2025/Dec/10/html-tools/">HTML Tools pattern</a>
+    </div>
+
+    <script>
+        const groqInput = document.getElementById('groqKey');
+        const statusDiv = document.getElementById('status');
+
+        // Load existing
+        if (localStorage.getItem('groq_api_key')) {
+            groqInput.value = localStorage.getItem('groq_api_key');
+        }
+
+        function saveKeys() {
+            const key = groqInput.value.trim();
+            if (key) {
+                localStorage.setItem('groq_api_key', key);
+                statusDiv.textContent = "Keys saved securely to localStorage!";
+                statusDiv.className = "success";
+            } else {
+                localStorage.removeItem('groq_api_key');
+                statusDiv.textContent = "Keys cleared.";
+                statusDiv.className = "";
+            }
+            setTimeout(() => { statusDiv.textContent = ""; }, 3000);
+        }
+    </script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
             --bg: #f8fafc;
             --text: #1e293b;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background: var(--bg);
@@ -18,13 +20,23 @@
             margin: 0 auto;
             padding: 4rem 2rem;
         }
-        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        p.subtitle { color: #64748b; margin-bottom: 3rem; }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p.subtitle {
+            color: #64748b;
+            margin-bottom: 3rem;
+        }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 1.5rem;
         }
+
         .card {
             background: white;
             padding: 1.5rem;
@@ -35,19 +47,32 @@
             transition: transform 0.2s, box-shadow 0.2s;
             border: 1px solid #e2e8f0;
         }
+
         .card:hover {
             transform: translateY(-4px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             border-color: var(--primary);
         }
-        .card h2 { margin: 0 0 0.5rem 0; font-size: 1.25rem; color: var(--primary); }
-        .card p { margin: 0; font-size: 0.9rem; color: #64748b; line-height: 1.4; }
+
+        .card h2 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+
+        .card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
     </style>
 </head>
+
 <body>
     <h1>HTML Tools</h1>
     <p class="subtitle">A collection of simple, self-contained tools built with AI.</p>
-    
+
     <div class="grid">
         <a href="qr-code.html" class="card">
             <h2>QR Code Creator</h2>
@@ -57,12 +82,26 @@
             <h2>Markdown Editor</h2>
             <p>Live preview markdown editor with automatic local persistence.</p>
         </a>
+        <a href="groq-researcher.html" class="card">
+            <h2>Groq Web Researcher</h2>
+            <p>An agentic search tool powered by Groq Compound models and live web search.</p>
+        </a>
+        <a href="settings.html" class="card">
+            <h2>API Settings</h2>
+            <p>Securely manage your API keys locally to power the AI tools.</p>
+        </a>
     </div>
 
-    <footer style="margin-top: 5rem; border-top: 1px solid #e2e8f0; padding-top: 2rem; font-size: 0.8rem; color: #94a3b8; line-height: 1.5;">
-        Created by Francisco for <a href="https://partlysunnyai.com" style="color: inherit;">Partly Sunny with a Chance of AI</a>.<br>
-        Inspired by <a href="https://simonwillison.net/2025/Dec/10/html-tools/" style="color: inherit;">Simon Willison</a>. 
+    <footer
+        style="margin-top: 5rem; border-top: 1px solid #e2e8f0; padding-top: 2rem; font-size: 0.8rem; color: #94a3b8; line-height: 1.5;">
+        Created by Francisco for <a href="https://partlysunnyai.com" style="color: inherit;">Partly Sunny with a Chance
+            of
+            AI</a>.<br>
+        Inspired by Simon
+        Willison's <a href="https://simonwillison.net/2025/Dec/10/html-tools/" style="color: inherit;">HTML tools
+            pattern</a>.
         Hosted on GitHub Pages.
     </footer>
 </body>
+
 </html>
